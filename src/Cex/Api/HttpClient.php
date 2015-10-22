@@ -261,9 +261,7 @@ class HttpClient
     {
         $post = '';
         if (!empty($param)) {
-            http_build_query($param);
-
-            $post = substr($post, 0, strlen($post) - 1);
+            $post = http_build_query($param);
         }
 
         $ch = curl_init();
