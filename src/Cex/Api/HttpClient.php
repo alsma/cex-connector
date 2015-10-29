@@ -29,6 +29,9 @@ class HttpClient
     /** @var bool */
     private $verifySSL;
 
+    /** @var string */
+    private $proxy;
+
     /**
      * Create cexapi object
      *
@@ -41,6 +44,7 @@ class HttpClient
         $this->apiKey = $config['apiKey'];
         $this->apiSecret = $config['apiSecret'];
         $this->verifySSL = isset($config['verifySSL']) ? $config['verifySSL'] : true;
+        $this->proxy = isset($config['proxy']) ? $config['proxy'] : '';
 
         $this->nonce();
     }
@@ -273,6 +277,11 @@ class HttpClient
         if (!$this->verifySSL) {
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        }
+
+        if (!empty($this->proxy)) {
+            curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, 0);
+            curl_setopt($ch, CURLOPT_PROXY, $this->proxy);
         }
 
         $out = curl_exec($ch);
