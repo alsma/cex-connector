@@ -287,7 +287,7 @@ class HttpClient
         $out = curl_exec($ch);
 
         if (curl_errno($ch)) {
-            trigger_error("cURL failed. Error #" . curl_errno($ch) . ": " . curl_error($ch), E_USER_ERROR);
+            throw new \RuntimeException(curl_error($ch), curl_errno($ch));
         }
 
         curl_close($ch);
