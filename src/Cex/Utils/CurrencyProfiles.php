@@ -8,6 +8,7 @@ class CurrencyProfiles
     private static $config = [
         'BTC'  => ['scale' => 0, 'precision' => 8],
         'LTC'  => ['scale' => 0, 'precision' => 8],
+        'ETH'  => ['scale' => 2, 'precision' => 8],
         'USD'  => ['scale' => 0, 'precision' => 2],
         'EUR'  => ['scale' => 0, 'precision' => 2],
         'RUB'  => ['scale' => 0, 'precision' => 2],
