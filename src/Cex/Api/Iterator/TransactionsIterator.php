@@ -216,12 +216,12 @@ class TransactionsIterator implements \Iterator
         if ($this->isRewound() && $this->hasNext === true) {
             $el = end($this->elements);
 
-            $params['txid'] = $el['id'];
+            $params['id'] = $el['id'];
             $params['time'] = $el['time'];
             $params['prev'] = 1;
         } elseif (!$this->isRewound()) {
             // emulate latest transaction as start point
-            $params['txid'] = '1';
+            $params['id'] = '1';
             $params['time'] = '1970-01-01T00:00:00.000Z';
             $params['prev'] = 1;
         }
